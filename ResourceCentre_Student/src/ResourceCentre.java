@@ -188,8 +188,18 @@ public class ResourceCentre {
 	}
 	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
 		
+		// Check if blank
+		if (cc.getAssetTag().isBlank() || cc.getDescription().isBlank() || cc.getOpticalZoom() < 0) {
+			return;
+		}
+		
+		// Check if in list
+		for (Camcorder cam : camcorderList) {
+			if (cam.getAssetTag().equalsIgnoreCase(cc.getAssetTag())) {
+				return;
+			}
+		}
 		camcorderList.add(cc);
-		//camcorderList.add(cc); // Error for Junit to catch.
 		System.out.println("Camcorder added");
 	}
 	
@@ -203,7 +213,18 @@ public class ResourceCentre {
 		
 	}	
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
-
+		
+		// Check if blank
+		if (cb.getAssetTag().isBlank() || cb.getDescription().isBlank() || cb.getOs().isBlank()) {
+			return;
+		}
+		
+		// Check if in list
+		for (Chromebook crome : chromebookList) {
+			if (crome.getAssetTag().equalsIgnoreCase(cb.getAssetTag())) {
+				return;
+			}
+		}
 		chromebookList.add(cb);
 		System.out.println("Chromebook added");
 	}
